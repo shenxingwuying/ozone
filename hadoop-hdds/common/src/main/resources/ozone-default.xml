@@ -1680,6 +1680,14 @@
       datanodes to save the downloaded container(in compressed format).
     </description>
   </property>
+  <property>
+    <name>hdds.datanode.replication.port</name>
+    <value>9886</value>
+    <tag>DATANODE</tag>
+    <description>The port used for replication
+      between datanodes. This port is used for the replication of containers
+      between datanodes.
+  </property>
 
   <property>
     <name>hdds.scm.safemode.pipeline.creation</name>
