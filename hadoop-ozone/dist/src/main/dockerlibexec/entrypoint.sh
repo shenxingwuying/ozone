@@ -99,9 +99,15 @@ fi
 
 CONF_DESTINATION_DIR="${OZONE_CONF_DIR:-/opt/hadoop/etc/hadoop}"
 
+# custom define config first at local.
+# eg: OZONE_SOURCE_CONF_DIR=$DIR/../etc/hadoop
+CONF_SOURCE_DIR="${OZONE_SOURCE_CONF_DIR}"
+
 #Try to copy the defaults
 set +e
-if [[ -d "/opt/ozone/etc/hadoop" ]]; then
+if [[ -d "$CONF_SOURCE_DIR" ]]; then
+   cp $CONF_SOURCE_DIR/* "$CONF_DESTINATION_DIR/" > /dev/null 2>&1
+elif [[ -d "/opt/ozone/etc/hadoop" ]]; then
    cp /opt/ozone/etc/hadoop/* "$CONF_DESTINATION_DIR/" > /dev/null 2>&1
 elif [[ -d "/opt/hadoop/etc/hadoop" ]]; then
    cp /opt/hadoop/etc/hadoop/* "$CONF_DESTINATION_DIR/" > /dev/null 2>&1
